@@ -162,7 +162,7 @@
   },
   "kind": "Package",
   "canonicalReference": "@bronzitejs/framework!",
-  "docComment": "",
+  "docComment": "/**\n * A discord.js framework providing a simple way to create plugins.\n *\n * @packageDocumentation\n */\n",
   "name": "@bronzitejs/framework",
   "members": [
     {
@@ -182,7 +182,7 @@
             {
               "kind": "Reference",
               "text": "BronzitePluginMetadata",
-              "canonicalReference": "@bronzitejs/framework!~BronzitePluginMetadata:interface"
+              "canonicalReference": "@bronzitejs/framework!BronzitePluginMetadata:interface"
             },
             {
               "kind": "Content",
@@ -195,7 +195,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@bronzitejs/framework!BronziteCallablePluginMetadata#cb:member",
-              "docComment": "",
+              "docComment": "/**\n * The callback (or code) for the plugin.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -204,7 +204,7 @@
                 {
                   "kind": "Reference",
                   "text": "BronzitePluginCallback",
-                  "canonicalReference": "@bronzitejs/framework!~BronzitePluginCallback:type"
+                  "canonicalReference": "@bronzitejs/framework!BronzitePluginCallback:type"
                 },
                 {
                   "kind": "Content",
@@ -581,7 +581,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@bronzitejs/framework!BronziteOptions#pluginCircularDependencyBehavior:member",
-              "docComment": "",
+              "docComment": "/**\n * How to handle circular dependencies in plugins.\n *\n * @defaultValue\n *\n * \"error\"\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -625,7 +625,7 @@
             {
               "kind": "Reference",
               "text": "BronzitePluginMetadata",
-              "canonicalReference": "@bronzitejs/framework!~BronzitePluginMetadata:interface"
+              "canonicalReference": "@bronzitejs/framework!BronzitePluginMetadata:interface"
             },
             {
               "kind": "Content",
@@ -691,7 +691,7 @@
             {
               "kind": "Reference",
               "text": "BronzitePluginCallback",
-              "canonicalReference": "@bronzitejs/framework!~BronzitePluginCallback:type"
+              "canonicalReference": "@bronzitejs/framework!BronzitePluginCallback:type"
             },
             {
               "kind": "Content",
@@ -700,7 +700,7 @@
             {
               "kind": "Reference",
               "text": "BronzitePluginMetadata",
-              "canonicalReference": "@bronzitejs/framework!~BronzitePluginMetadata:interface"
+              "canonicalReference": "@bronzitejs/framework!BronzitePluginMetadata:interface"
             },
             {
               "kind": "Content",
@@ -741,6 +741,174 @@
             }
           ],
           "name": "bronzitePlugin"
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@bronzitejs/framework!BronzitePluginCallback:type",
+          "docComment": "/**\n * Represents a bronzite plugin callback.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type BronzitePluginCallback = "
+            },
+            {
+              "kind": "Content",
+              "text": "(client: "
+            },
+            {
+              "kind": "Reference",
+              "text": "BronziteClient",
+              "canonicalReference": "@bronzitejs/framework!BronziteClient:class"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<any>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "BronzitePluginCallback",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@bronzitejs/framework!BronzitePluginMetadata:interface",
+          "docComment": "/**\n * Represents the metadata for a bronzite plugin.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface BronzitePluginMetadata "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "BronzitePluginMetadata",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@bronzitejs/framework!BronzitePluginMetadata#dependencies:member",
+              "docComment": "/**\n * The dependencies of the plugin.\n *\n * @defaultValue\n *\n * undefined\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "dependencies?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "dependencies",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@bronzitejs/framework!BronzitePluginMetadata#name:member",
+              "docComment": "/**\n * The name of the plugin.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@bronzitejs/framework!BronzitePluginMetadata#startAt:member",
+              "docComment": "/**\n * At what point the plugin should be run.\n *\n * @defaultValue\n *\n * \"immediate\"\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "startAt?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PluginPriority",
+                  "canonicalReference": "@bronzitejs/framework!PluginPriority:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "startAt",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@bronzitejs/framework!BronzitePluginMetadata#version:member",
+              "docComment": "/**\n * The version of Bronzite used by this plugin (semver).\n *\n * @defaultValue\n *\n * \"0.0.0\"\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "version?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "version",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
         },
         {
           "kind": "TypeAlias",
@@ -847,7 +1015,7 @@
             {
               "kind": "Reference",
               "text": "BronzitePluginMetadata",
-              "canonicalReference": "@bronzitejs/framework!~BronzitePluginMetadata:interface"
+              "canonicalReference": "@bronzitejs/framework!BronzitePluginMetadata:interface"
             },
             {
               "kind": "Content",
@@ -868,7 +1036,7 @@
             {
               "kind": "Reference",
               "text": "BronzitePluginMetadata",
-              "canonicalReference": "@bronzitejs/framework!~BronzitePluginMetadata:interface"
+              "canonicalReference": "@bronzitejs/framework!BronzitePluginMetadata:interface"
             },
             {
               "kind": "Content",

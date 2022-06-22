@@ -1,6 +1,6 @@
 import { Client, ClientOptions } from "discord.js";
 import z from "zod";
-import bronzitePlugin, { BronziteCallablePluginMetadata, PluginPriority, runPlugin } from "./plugin";
+import bronzitePlugin, { BronziteCallablePluginMetadata, PluginPriority, _runPlugin } from "./plugin";
 
 /**
  * Represents the priority a hook should run on.
@@ -13,6 +13,10 @@ export type HookPriority = "onLogin" | "onReady"
  * @public
  */
 export interface BronziteOptions extends ClientOptions {
+    /**
+     * How to handle circular dependencies in plugins.
+     * @defaultValue "error"
+     */
     pluginCircularDependencyBehavior?: "error" | "ignore"
 }
 
@@ -56,7 +60,7 @@ export class BronziteClient extends Client {
         const priority = plugin.startAt || "immediate";
         this._plugins[priority].push(plugin);
         if (priority === "immediate") {
-            await runPlugin(this, plugin);
+            await _runPlugin(this, plugin);
         }
         return this
     }
@@ -116,7 +120,7 @@ export class BronziteClient extends Client {
             const { startAt } = sortedPlugins[0]
             this._plugins[startAt!] = sortedPlugins.filter(p => !p.delete);
         };
-        const promises = sortedPlugins.map(plugin => runPlugin(this, plugin));
+        const promises = sortedPlugins.map(plugin => _runPlugin(this, plugin));
         await Promise.all(promises)
     }
 

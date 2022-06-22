@@ -7,13 +7,8 @@
 import { Client } from 'discord.js';
 import { ClientOptions } from 'discord.js';
 
-// Warning: (ae-forgotten-export) The symbol "BronzitePluginMetadata" needs to be exported by the entry point index.d.ts
-//
 // @public
 export interface BronziteCallablePluginMetadata extends BronzitePluginMetadata {
-    // Warning: (ae-forgotten-export) The symbol "BronzitePluginCallback" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
     cb: BronzitePluginCallback;
 }
 
@@ -28,7 +23,6 @@ export class BronziteClient extends Client {
 
 // @public
 export interface BronziteOptions extends ClientOptions {
-    // (undocumented)
     pluginCircularDependencyBehavior?: "error" | "ignore";
 }
 
@@ -39,6 +33,17 @@ export function bronzitePlugin<T extends BronzitePluginMetadata>(data: T): T;
 export function bronzitePlugin(cb: BronzitePluginCallback, data: BronzitePluginMetadata): BronziteCallablePluginMetadata;
 
 // @public
+export type BronzitePluginCallback = (client: BronziteClient) => Promise<any>;
+
+// @public
+export interface BronzitePluginMetadata {
+    dependencies?: string[];
+    name: string;
+    startAt?: PluginPriority;
+    version?: string;
+}
+
+// @public
 export type HookCallback = (client: BronziteClient) => void;
 
 // @public
@@ -47,10 +52,8 @@ export type HookPriority = "onLogin" | "onReady";
 // @public
 export type PluginPriority = 'immediate' | 'preLogin' | 'postLogin' | 'postReady';
 
-// Warning: (ae-internal-missing-underscore) The name "runPlugin" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
-export function runPlugin(client: BronziteClient, plugin: BronziteCallablePluginMetadata): Promise<unknown>;
+export function _runPlugin(client: BronziteClient, plugin: BronziteCallablePluginMetadata): Promise<unknown>;
 
 // @public
 export function validate(data: Partial<BronzitePluginMetadata>, callable: false): BronzitePluginMetadata;
@@ -60,7 +63,5 @@ export function validate(data: Partial<BronziteCallablePluginMetadata>, callable
 
 // @public
 export function validate<T>(data: Partial<T>, callable: boolean): T;
-
-// (No @packageDocumentation comment for this package)
 
 ```

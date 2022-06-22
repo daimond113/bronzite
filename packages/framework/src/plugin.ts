@@ -10,10 +10,25 @@ const version = '0.0.0'
  * Represents the metadata for a bronzite plugin.
  * @public
  */
-interface BronzitePluginMetadata {
+export interface BronzitePluginMetadata {
+    /**
+     * The name of the plugin.
+     */
     name: string;
+    /**
+     * The dependencies of the plugin.
+     * @defaultValue undefined
+     */
     dependencies?: string[],
+    /**
+     * The version of Bronzite used by this plugin (semver).
+     * @defaultValue "0.0.0"
+     */
     version?: string;
+    /**
+     * At what point the plugin should be run.
+     * @defaultValue "immediate"
+     */
     startAt?: PluginPriority;
 }
 
@@ -28,6 +43,9 @@ export type PluginPriority = 'immediate' | 'preLogin' | 'postLogin' | 'postReady
  * @public
  */
 export interface BronziteCallablePluginMetadata extends BronzitePluginMetadata {
+    /**
+     * The callback (or code) for the plugin.
+     */
     cb: BronzitePluginCallback;
 }
 
@@ -35,7 +53,7 @@ export interface BronziteCallablePluginMetadata extends BronzitePluginMetadata {
  * Represents a bronzite plugin callback.
  * @public
  */
-type BronzitePluginCallback = (client: BronziteClient) => Promise<any>;
+export type BronzitePluginCallback = (client: BronziteClient) => Promise<any>;
 
 /**
  * Validates a bronzite plugin.
@@ -90,7 +108,7 @@ export function validate(data: Partial<BronzitePluginMetadata | BronziteCallable
  * @returns The promise resolving after the plugin has ran
  * @internal
  */
-export function runPlugin(client: BronziteClient, plugin: BronziteCallablePluginMetadata): Promise<unknown> {
+export function _runPlugin(client: BronziteClient, plugin: BronziteCallablePluginMetadata): Promise<unknown> {
     return Promise.resolve(plugin.cb(client))
 }
 
