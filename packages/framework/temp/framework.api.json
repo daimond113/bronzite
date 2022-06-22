@@ -1,0 +1,805 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.25.2",
+    "schemaVersion": 1006,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "@bronzitejs/framework!",
+  "docComment": "",
+  "name": "@bronzitejs/framework",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@bronzitejs/framework!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Class",
+          "canonicalReference": "@bronzitejs/framework!BronziteClient:class",
+          "docComment": "/**\n * Represents the main client for the framework.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class BronziteClient extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Client",
+              "canonicalReference": "discord.js!Client:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "BronziteClient",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@bronzitejs/framework!BronziteClient:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `BronziteClient` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(options: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "BronziteOptions",
+                  "canonicalReference": "@bronzitejs/framework!BronziteOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@bronzitejs/framework!BronziteClient#addHook:member(1)",
+              "docComment": "/**\n * Adds a hook to the client.\n *\n * @param hook - The {@link HookPriority | hook priority} this hook should run on.\n *\n * @param cb - The callback to run.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addHook(hook: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HookPriority",
+                  "canonicalReference": "@bronzitejs/framework!HookPriority:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", cb: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "HookCallback",
+                  "canonicalReference": "@bronzitejs/framework!HookCallback:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "hook",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "cb",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "name": "addHook"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@bronzitejs/framework!BronziteClient#decorate:member(1)",
+              "docComment": "/**\n * Adds a property to the client.\n *\n * @param prop - The property to set.\n *\n * @param value - The value to set the property to.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "decorate(prop: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "prop",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "name": "decorate"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@bronzitejs/framework!BronziteClient#login:member(1)",
+              "docComment": "/**\n * Logs in to the Discord API and runs plugins.\n *\n * @param token - The token to login with.\n *\n * @returns A promise that resolves when the client is logged in and all plugins ran.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "login(token?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "token",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "name": "login"
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@bronzitejs/framework!BronziteOptions:interface",
+          "docComment": "/**\n * Represents the options for creating a BronziteClient.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface BronziteOptions extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "ClientOptions",
+              "canonicalReference": "discord.js!ClientOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "BronziteOptions",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@bronzitejs/framework!BronziteOptions#pluginCircularDependencyBehavior:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "pluginCircularDependencyBehavior?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"error\" | \"ignore\""
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "pluginCircularDependencyBehavior",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@bronzitejs/framework!bronzitePlugin:function(1)",
+          "docComment": "/**\n * Validates a bronzite plugin's metadata.\n *\n * @param data - The metadata to validate.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function bronzitePlugin<T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BronzitePluginMetadata",
+              "canonicalReference": "@bronzitejs/framework!~BronzitePluginMetadata:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">(data: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "data",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "bronzitePlugin"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@bronzitejs/framework!bronzitePlugin:function(2)",
+          "docComment": "/**\n * Creates a bronzite plugin.\n *\n * @param cb - The callback to use for the plugin.\n *\n * @param data - The metadata for the plugin.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function bronzitePlugin(cb: "
+            },
+            {
+              "kind": "Reference",
+              "text": "BronzitePluginCallback",
+              "canonicalReference": "@bronzitejs/framework!~BronzitePluginCallback:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", data: "
+            },
+            {
+              "kind": "Reference",
+              "text": "BronzitePluginMetadata",
+              "canonicalReference": "@bronzitejs/framework!~BronzitePluginMetadata:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "CallableBronzitePluginMetadata",
+              "canonicalReference": "@bronzitejs/framework!CallableBronzitePluginMetadata:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 2,
+          "parameters": [
+            {
+              "parameterName": "cb",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "data",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "bronzitePlugin"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "@bronzitejs/framework!CallableBronzitePluginMetadata:interface",
+          "docComment": "/**\n * Represents a callable bronzite plugin.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface CallableBronzitePluginMetadata extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "BronzitePluginMetadata",
+              "canonicalReference": "@bronzitejs/framework!~BronzitePluginMetadata:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "CallableBronzitePluginMetadata",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@bronzitejs/framework!CallableBronzitePluginMetadata#cb:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "cb: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "BronzitePluginCallback",
+                  "canonicalReference": "@bronzitejs/framework!~BronzitePluginCallback:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "cb",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@bronzitejs/framework!HookCallback:type",
+          "docComment": "/**\n * Represents a hook's callback function.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type HookCallback = "
+            },
+            {
+              "kind": "Content",
+              "text": "(client: "
+            },
+            {
+              "kind": "Reference",
+              "text": "BronziteClient",
+              "canonicalReference": "@bronzitejs/framework!BronziteClient:class"
+            },
+            {
+              "kind": "Content",
+              "text": ") => void"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "HookCallback",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@bronzitejs/framework!HookPriority:type",
+          "docComment": "/**\n * Represents the priority a hook should run on.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type HookPriority = "
+            },
+            {
+              "kind": "Content",
+              "text": "\"onLogin\" | \"onReady\""
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "HookPriority",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@bronzitejs/framework!PluginPriority:type",
+          "docComment": "/**\n * Represents a bronzite plugin's loading priority.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type PluginPriority = "
+            },
+            {
+              "kind": "Content",
+              "text": "'preLogin' | 'postLogin' | 'postReady'"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "PluginPriority",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@bronzitejs/framework!validateCallable:function(1)",
+          "docComment": "/**\n * Validates a bronzite plugin.\n *\n * @param data - The metadata to validate.\n *\n * @returns The validated metadata.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function validateCallable(data: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Partial",
+              "canonicalReference": "!Partial:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "CallableBronzitePluginMetadata",
+              "canonicalReference": "@bronzitejs/framework!CallableBronzitePluginMetadata:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "CallableBronzitePluginMetadata",
+              "canonicalReference": "@bronzitejs/framework!CallableBronzitePluginMetadata:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 6,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "data",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "validateCallable"
+        }
+      ]
+    }
+  ]
+}

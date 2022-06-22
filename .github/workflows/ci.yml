@@ -1,0 +1,17 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: Install rush
+        run: npm i --location=global @microsoft/rush
+      - name: Install dependencies
+        run: rush install
+      - name: Run tests
+        working-directory: packages/framework
+        run: rushx test

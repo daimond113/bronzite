@@ -1,0 +1,115 @@
+{
+  "type": "category",
+  "label": "API Reference",
+  "items": [
+    {
+      "type": "doc",
+      "label": "(members)",
+      "id": "api/index"
+    },
+    {
+      "type": "category",
+      "label": "@bronzitejs/framework",
+      "items": [
+        {
+          "type": "doc",
+          "label": "(members)",
+          "id": "api/framework"
+        },
+        {
+          "type": "category",
+          "label": "BronziteClient",
+          "items": [
+            {
+              "type": "doc",
+              "label": "(members)",
+              "id": "api/framework.bronziteclient"
+            },
+            {
+              "type": "doc",
+              "label": "(constructor)",
+              "id": "api/framework.bronziteclient._constructor_"
+            },
+            {
+              "type": "doc",
+              "label": "addHook",
+              "id": "api/framework.bronziteclient.addhook"
+            },
+            {
+              "type": "doc",
+              "label": "decorate",
+              "id": "api/framework.bronziteclient.decorate"
+            },
+            {
+              "type": "doc",
+              "label": "login",
+              "id": "api/framework.bronziteclient.login"
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "BronziteOptions",
+          "items": [
+            {
+              "type": "doc",
+              "label": "(members)",
+              "id": "api/framework.bronziteoptions"
+            },
+            {
+              "type": "doc",
+              "label": "pluginCircularDependencyBehavior",
+              "id": "api/framework.bronziteoptions.plugincirculardependencybehavior"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "label": "bronzitePlugin",
+          "id": "api/framework.bronziteplugin"
+        },
+        {
+          "type": "doc",
+          "label": "bronzitePlugin",
+          "id": "api/framework.bronziteplugin_1"
+        },
+        {
+          "type": "category",
+          "label": "CallableBronzitePluginMetadata",
+          "items": [
+            {
+              "type": "doc",
+              "label": "(members)",
+              "id": "api/framework.callablebronzitepluginmetadata"
+            },
+            {
+              "type": "doc",
+              "label": "cb",
+              "id": "api/framework.callablebronzitepluginmetadata.cb"
+            }
+          ]
+        },
+        {
+          "type": "doc",
+          "label": "HookCallback",
+          "id": "api/framework.hookcallback"
+        },
+        {
+          "type": "doc",
+          "label": "HookPriority",
+          "id": "api/framework.hookpriority"
+        },
+        {
+          "type": "doc",
+          "label": "PluginPriority",
+          "id": "api/framework.pluginpriority"
+        },
+        {
+          "type": "doc",
+          "label": "validateCallable",
+          "id": "api/framework.validatecallable"
+        }
+      ]
+    }
+  ]
+}
