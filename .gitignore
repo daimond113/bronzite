@@ -66,3 +66,7 @@ common/autoinstallers/*/.npmrc
 
 # Heft
 .heft
+
+packages/**/dist
+packages/website/docs/api
+packages/website/api_nav.json

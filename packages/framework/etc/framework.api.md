@@ -7,12 +7,23 @@
 import { Client } from 'discord.js';
 import { ClientOptions } from 'discord.js';
 
+// Warning: (ae-forgotten-export) The symbol "BronzitePluginMetadata" needs to be exported by the entry point index.d.ts
+//
+// @public
+export interface BronziteCallablePluginMetadata extends BronzitePluginMetadata {
+    // Warning: (ae-forgotten-export) The symbol "BronzitePluginCallback" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    cb: BronzitePluginCallback;
+}
+
 // @public
 export class BronziteClient extends Client {
     constructor(options: BronziteOptions);
-    addHook(hook: HookPriority, cb: HookCallback): void;
-    decorate(prop: string, value: any): void;
+    addHook(hook: HookPriority, cb: HookCallback): this;
+    decorate<K extends PropertyKey, V>(key: K, value: V): this;
     login(token?: string | undefined): Promise<string>;
+    register(plugin: BronziteCallablePluginMetadata): Promise<this>;
 }
 
 // @public
@@ -21,21 +32,11 @@ export interface BronziteOptions extends ClientOptions {
     pluginCircularDependencyBehavior?: "error" | "ignore";
 }
 
-// Warning: (ae-forgotten-export) The symbol "BronzitePluginMetadata" needs to be exported by the entry point index.d.ts
-//
 // @public
 export function bronzitePlugin<T extends BronzitePluginMetadata>(data: T): T;
 
-// Warning: (ae-forgotten-export) The symbol "BronzitePluginCallback" needs to be exported by the entry point index.d.ts
-//
 // @public
-export function bronzitePlugin(cb: BronzitePluginCallback, data: BronzitePluginMetadata): CallableBronzitePluginMetadata;
-
-// @public
-export interface CallableBronzitePluginMetadata extends BronzitePluginMetadata {
-    // (undocumented)
-    cb: BronzitePluginCallback;
-}
+export function bronzitePlugin(cb: BronzitePluginCallback, data: BronzitePluginMetadata): BronziteCallablePluginMetadata;
 
 // @public
 export type HookCallback = (client: BronziteClient) => void;
@@ -44,15 +45,21 @@ export type HookCallback = (client: BronziteClient) => void;
 export type HookPriority = "onLogin" | "onReady";
 
 // @public
-export type PluginPriority = 'preLogin' | 'postLogin' | 'postReady';
+export type PluginPriority = 'immediate' | 'preLogin' | 'postLogin' | 'postReady';
 
 // Warning: (ae-internal-missing-underscore) The name "runPlugin" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export function runPlugin(client: BronziteClient, plugin: CallableBronzitePluginMetadata): Promise<void>;
+export function runPlugin(client: BronziteClient, plugin: BronziteCallablePluginMetadata): Promise<unknown>;
 
 // @public
-export function validateCallable(data: Partial<CallableBronzitePluginMetadata>): CallableBronzitePluginMetadata;
+export function validate(data: Partial<BronzitePluginMetadata>, callable: false): BronzitePluginMetadata;
+
+// @public
+export function validate(data: Partial<BronziteCallablePluginMetadata>, callable: true): BronziteCallablePluginMetadata;
+
+// @public
+export function validate<T>(data: Partial<T>, callable: boolean): T;
 
 // (No @packageDocumentation comment for this package)
 

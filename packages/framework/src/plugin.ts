@@ -1,7 +1,10 @@
 import type { BronziteClient } from "./client";
 import z, { ZodRawShape } from 'zod'
-import { version } from '../package.json'
 import semver from 'semver'
+
+// TODO: figure out how to require it from the package.json
+// without making ts output a whole different dist structure
+const version = '0.0.0'
 
 /**
  * Represents the metadata for a bronzite plugin.

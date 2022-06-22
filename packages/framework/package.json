@@ -30,7 +30,6 @@
         "@types/node": "~18.0.0",
         "api-documenter-docusaurus-plugin": "workspace:*",
         "move-file-cli": "~3.0.0",
-        "move-cli": "~2.0.0",
         "@types/jest": "~28.1.3",
         "jest": "~28.1.1",
         "ts-jest": "~28.0.5",
