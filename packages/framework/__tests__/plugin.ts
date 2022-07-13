@@ -1,4 +1,5 @@
 import { bronzitePlugin } from '../src/plugin'
+import { jest, describe, it, expect } from '@jest/globals'
 
 jest.mock('../package.json', () => ({ version: '1.0.0' }))
 

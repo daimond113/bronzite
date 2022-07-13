@@ -5,6 +5,7 @@
 ```ts
 
 import { Client } from 'discord.js';
+import { ClientEvents } from 'discord.js';
 import { ClientOptions } from 'discord.js';
 
 // @public
@@ -17,6 +18,8 @@ export class BronziteClient extends Client {
     constructor(options: BronziteOptions);
     addHook(hook: HookPriority, cb: HookCallback): this;
     decorate<K extends PropertyKey, V>(key: K, value: V): this;
+    emit<K extends keyof ClientEvents>(event: K, ...args: ClientEvents[K]): boolean;
+    emit<S extends string | symbol>(event: Exclude<S, keyof ClientEvents>, ...args: unknown[]): boolean;
     login(token?: string | undefined): Promise<string>;
     register(plugin: BronziteCallablePluginMetadata): Promise<this>;
 }
@@ -44,10 +47,19 @@ export interface BronzitePluginMetadata {
 }
 
 // @public
+export type CamelToPascal<T extends string> = T extends `${infer FirstChar}${infer Rest}` ? `${Capitalize<FirstChar>}${Rest}` : never;
+
+// @internal
+export const _clientEventsArray: (keyof ClientEvents)[];
+
+// @public
+export type GenerateHookPriority<K extends string> = `onPre${K}` | `onPost${K}`;
+
+// @public
 export type HookCallback = (client: BronziteClient) => void;
 
 // @public
-export type HookPriority = "onLogin" | "onReady";
+export type HookPriority = GenerateHookPriority<CamelToPascal<keyof ClientEvents>> | GenerateHookPriority<'Login'>;
 
 // @public
 export type PluginPriority = 'immediate' | 'preLogin' | 'postLogin' | 'postReady';

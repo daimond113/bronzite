@@ -1,12 +1,20 @@
-import { Client, ClientOptions } from "discord.js";
+import { Client, type ClientEvents, type ClientOptions } from "discord.js";
 import z from "zod";
-import bronzitePlugin, { BronziteCallablePluginMetadata, PluginPriority, _runPlugin } from "./plugin";
+import bronzitePlugin, { type BronziteCallablePluginMetadata, type PluginPriority, _runPlugin } from "./plugin";
+import { CamelToPascal, _clientEventsArray } from "./utils";
+import { pascalCase } from 'pascal-case'
+
+/**
+ * Makes {@link HookPriority | hook priority} key.
+ * @public
+ */
+export type GenerateHookPriority<K extends string> = `onPre${K}` | `onPost${K}`;
 
 /**
  * Represents the priority a hook should run on.
  * @public
  */
-export type HookPriority = "onLogin" | "onReady"
+export type HookPriority = GenerateHookPriority<CamelToPascal<keyof ClientEvents>> | GenerateHookPriority<'Login'>;
 
 /**
  * Represents the options for creating a BronziteClient.
@@ -45,9 +53,45 @@ export class BronziteClient extends Client {
         postReady: []
     }
 
-    private _hooks: { [key in HookPriority]: HookCallback[] } = {
-        onLogin: [],
-        onReady: []
+    private _hooks: { [key in HookPriority]: HookCallback[] } = this._makeHooks()
+
+    private _makeHooks() {
+        return [..._clientEventsArray, 'login'].reduce<Record<HookPriority, HookCallback[]>>((acc, event) => {
+            const e = pascalCase(event)
+            return {
+                ...acc,
+                [`onPre${e}`]: [],
+                [`on${e}`]: [],
+                [`onPost${e}`]: []
+            }
+        }, {} as any)
+    }
+
+    private _runHooks(hook: unknown, type: 'Pre' | 'Post') {
+        if (!_clientEventsArray.includes(String(hook) as any)) return
+        const e = pascalCase(String(hook)) as CamelToPascal<keyof ClientEvents>;
+        this._hooks[`on${type}${e}`].forEach((cb) => cb(this))
+    }
+
+    /**
+     * Emits events and runs hooks.
+     * @param event - The event to listen to.
+     * @param args - The arguments to pass to the event.
+     * @returns If the event had listeners.
+     */
+    public emit<K extends keyof ClientEvents>(event: K, ...args: ClientEvents[K]): boolean;
+    /**
+     * Emits events and runs hooks.
+     * @param event - The event to listen to.
+     * @param args - The arguments to pass to the event.
+     * @returns If the event had listeners.
+     */
+    public emit<S extends string | symbol>(event: Exclude<S, keyof ClientEvents>, ...args: unknown[]): boolean;
+    public emit(event: string | symbol, ...args: any[]): boolean {
+        this._runHooks(event, 'Pre')
+       const hadListeners = super.emit(event, ...args)
+        this._runHooks(event, 'Post')
+        return hadListeners
     }
 
     /**
@@ -133,11 +177,12 @@ export class BronziteClient extends Client {
         await this._runPluginsAndResolveDependencies(this._plugins.preLogin)
         this.once('ready', () => {
             this._runPluginsAndResolveDependencies(this._plugins.postReady)
-            this._hooks.onReady.forEach(cb => cb(this))
+            this._hooks.onPostReady.forEach(cb => cb(this))
         })
+        this._hooks.onPreLogin.forEach(cb => cb(this))
         const _r = await super.login(token);
+        this._hooks.onPostLogin.forEach(cb => cb(this));
         await this._runPluginsAndResolveDependencies(this._plugins.postLogin)
-        this._hooks.onLogin.forEach(cb => cb(this));
         return _r;
     }
 }

@@ -1,10 +1,8 @@
 import type { BronziteClient } from "./client";
-import z, { ZodRawShape } from 'zod'
+import z, { type ZodRawShape } from 'zod'
 import semver from 'semver'
-
-// TODO: figure out how to require it from the package.json
-// without making ts output a whole different dist structure
-const version = '0.0.0'
+const pkg = require('../package.json')
+const version = pkg.version
 
 /**
  * Represents the metadata for a bronzite plugin.
@@ -79,13 +77,6 @@ export function validate(data: Partial<BronziteCallablePluginMetadata>, callable
  * @public
  */
 export function validate<T>(data: Partial<T>, callable: boolean): T
-/**
- * Validates a bronzite plugin.
- * @param data - The metadata to validate.
- * @param callable - If the metadata's is callable.
- * @returns The validated metadata.
- * @public
- */
 export function validate(data: Partial<BronzitePluginMetadata | BronziteCallablePluginMetadata>, callable: boolean): BronzitePluginMetadata | BronziteCallablePluginMetadata {
     const obj = {
         name: z.string(),

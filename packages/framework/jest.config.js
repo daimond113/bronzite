@@ -2,5 +2,12 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  collectCoverage: true
+  collectCoverage: true,
+  globals: {
+    'ts-jest': {
+      astTransformers: {
+        before: ['jest-transform.js'],
+      },
+    }
+  }
 };

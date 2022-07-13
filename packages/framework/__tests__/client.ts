@@ -1,8 +1,11 @@
 import { BronziteClient } from '../src/client'
-import { Client } from 'discord.js'
+import { Client, ClientEvents } from 'discord.js'
 import { ZodError } from 'zod'
 import { bronzitePlugin } from '../src/plugin'
 import { once } from 'events'
+import { describe, beforeEach, it, expect, jest } from '@jest/globals'
+import { CamelToPascal, _clientEventsArray } from '../src/utils'
+import { pascalCase } from 'pascal-case'
 
 Client.prototype.login = async function (token) {
     setTimeout(() => this.emit('ready', {} as Client), 1_000)
@@ -47,16 +50,38 @@ describe('client', () => {
     })
 
     it('should run the hooks by priority', async () => {
-        const loginFunc = jest.fn()
+        const preLoginFunc = jest.fn()
+        const postLoginFunc = jest.fn()
         const readyFunc = jest.fn()
-        client.addHook('onLogin', loginFunc)
-        client.addHook('onReady', readyFunc)
+        client.addHook('onPreLogin', preLoginFunc)
+        client.addHook('onPostLogin', postLoginFunc)
+        client.addHook('onPostReady', readyFunc)
         await client.login('token')
-        expect(loginFunc).toHaveBeenCalled()
+        expect(preLoginFunc).toHaveBeenCalled()
+        expect(postLoginFunc).toHaveBeenCalled()
         expect(readyFunc).not.toHaveBeenCalled()
         await once(client, 'ready')
-        expect(loginFunc).toHaveBeenCalled()
+        expect(preLoginFunc).toHaveBeenCalled()
+        expect(postLoginFunc).toHaveBeenCalled()
         expect(readyFunc).toHaveBeenCalled()
+    })
+
+    _clientEventsArray.filter(v => v !== "error").forEach(event => {
+        it(`should run the hook with ${event}`, async () => {
+            const cEvent = pascalCase(event) as CamelToPascal<keyof ClientEvents>
+            const func = jest.fn()
+            client.addHook(`onPost${cEvent}`, func)
+            expect(func).not.toHaveBeenCalled()
+            await client.emit(event)
+            expect(func).toHaveBeenCalled()
+        })
+    })
+
+    it('should work with custom events', () => {
+        const func = jest.fn()
+        client.on('customEvent', () => void func())
+        client.emit('customEvent')
+        expect(func).toHaveBeenCalled()
     })
 
     it('should run plugins depended on by other plugins first', async () => {
