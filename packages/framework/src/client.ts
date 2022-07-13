@@ -61,7 +61,6 @@ export class BronziteClient extends Client {
             return {
                 ...acc,
                 [`onPre${e}`]: [],
-                [`on${e}`]: [],
                 [`onPost${e}`]: []
             }
         }, {} as any)
@@ -89,7 +88,7 @@ export class BronziteClient extends Client {
     public emit<S extends string | symbol>(event: Exclude<S, keyof ClientEvents>, ...args: unknown[]): boolean;
     public emit(event: string | symbol, ...args: any[]): boolean {
         this._runHooks(event, 'Pre')
-       const hadListeners = super.emit(event, ...args)
+        const hadListeners = super.emit(event, ...args)
         this._runHooks(event, 'Post')
         return hadListeners
     }
